@@ -12,6 +12,12 @@ public class UniversidadModel {
 
     public UniversidadModel(){}
 
+    public UniversidadModel(int idUniversidad, String nombre, String logo){
+        this.idUniversidad = idUniversidad;
+        this.nombre = nombre;
+        this.logo = logo;
+    }
+
     public UniversidadModel(int idUniversidad, String nombre, String logo, AdministradorUnivModel administradorUnivModel){
         this.idUniversidad = idUniversidad;
         this.nombre = nombre;

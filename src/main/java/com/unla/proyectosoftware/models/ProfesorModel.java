@@ -1,11 +1,11 @@
 package com.unla.proyectosoftware.models;
 
-import java.util.List;
+import java.util.Set;
 
 public class ProfesorModel extends UsuarioModel{
     private String nombre;
     private String apellido;
-    private List<MateriaModel> materias;
+    private Set<MateriaModel> materias;
 
     public ProfesorModel(){}
     
@@ -31,13 +31,12 @@ public class ProfesorModel extends UsuarioModel{
         this.apellido = apellido;
     }
 
-    public List<MateriaModel> getMaterias() {
+    public Set<MateriaModel> getMaterias() {
         return materias;
     }
 
-    public void setMaterias(List<MateriaModel> materias) {
+    public void setMaterias(Set<MateriaModel> materias) {
         this.materias = materias;
     }
-    
     
 }

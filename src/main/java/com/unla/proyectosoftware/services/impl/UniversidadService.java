@@ -10,26 +10,29 @@ import com.unla.proyectosoftware.repository.IUniversidadRespository;
 import com.unla.proyectosoftware.services.IUniversidadService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("universidadService")
 public class UniversidadService implements IUniversidadService{
 
     @Autowired
-    public IUniversidadRespository univRepository;
+    @Qualifier("universidadRepository")
+    public IUniversidadRespository universidadRepository;
 
     @Autowired
+    @Qualifier("universidadConverter")
     public UniversidadConverter universidadConverter;
 
     public List<UniversidadModel> traerUniversidades(){
         List<UniversidadModel> universidades= new ArrayList<>();
-        for(Universidad u : univRepository.findAll()){
+        for(Universidad u : universidadRepository.findAll()){
             universidades.add(universidadConverter.entityToModel(u));
         }
         return universidades;
     }
 
     public void insertOrUpdate(UniversidadModel univ){
-        univRepository.save(universidadConverter.modelToEntity(univ));
+        universidadRepository.save(universidadConverter.modelToEntity(univ));
     }
 }
