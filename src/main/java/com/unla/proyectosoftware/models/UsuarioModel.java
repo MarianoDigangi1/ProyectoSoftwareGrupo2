@@ -5,18 +5,18 @@ public class UsuarioModel {
 	private int idUsuario;
 	private String username;
 	private String password;
-	private String email;
+	private String mail;
 	private PerfilModel perfil;
 	
 	public UsuarioModel() {}
 
-	public UsuarioModel(int idUsuario, String username, String password, String email,
+	public UsuarioModel(int idUsuario, String username, String password, String mail,
 			PerfilModel perfil) {
 		super();
 		this.idUsuario = idUsuario;
 		this.username = username;
 		this.password = password;
-		this.email = email;
+		this.mail = mail;
 		this.perfil = perfil;
 	}
 
@@ -44,12 +44,12 @@ public class UsuarioModel {
 		this.password = password;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public PerfilModel getPerfil() {
@@ -61,5 +61,4 @@ public class UsuarioModel {
 	}
 	
 }
-
 

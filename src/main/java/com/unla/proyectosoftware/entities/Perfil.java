@@ -14,30 +14,30 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "perfil")
 public class Perfil {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPerfil;
-
+	
 	@Column(name = "nombreRol")
 	private String nombreRol;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "perfil")
-	private Set<Usuario> usuarios;
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="perfil")  //1 ROL TIENE MUCHOS USUARIOS  . perfil ES DE LA LISTA DE USUARIOS
+	private Set<Usuario> usuarios;
+
 	public Perfil() {}
 
-	public Perfil(int idPerfil, String nombreRol) {
+	public Perfil(int idPerfil,String nombreRol) {
 		super();
 		this.idPerfil = idPerfil;
 		this.nombreRol = nombreRol;
 	}
-
+	
 	public int getIdPerfil() {
 		return idPerfil;
 	}
 
-	public void setIdPerfil(int idPerfil) {
+	protected void setIdPerfil(int idPerfil) {
 		this.idPerfil = idPerfil;
 	}
 
@@ -49,4 +49,13 @@ public class Perfil {
 		this.nombreRol = nombreRol;
 	}
 
+	public Set<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 }
+
+

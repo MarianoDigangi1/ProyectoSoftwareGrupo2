@@ -14,41 +14,42 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	
 	@Autowired
 	private UserDetailsService userDetails;
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+	    return new BCryptPasswordEncoder(4);
 	}
-	
-	// Necesario para evitar que la seguridad se aplique a los resources Como los
-	// css, imagenes y javascripts
-	String[] resources = new String[] { "/include/**", "/css/**", "/icons/**", "/img/**", "/js/**", "/layer/**" };
-
+	//Necesario para evitar que la seguridad se aplique a los resources Como los css, imagenes y javascripts
+	String[] resources = new String[]{
+			"/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**"
+	};	
+	//Registra el service para usuarios y el encriptador de contrasena
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetails).passwordEncoder(passwordEncoder());
+			auth.userDetailsService(userDetails).passwordEncoder(passwordEncoder());     
 	}
 
+	//Que queremos que asegure y como.  
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
+		http.authorizeRequests() 
 			.antMatchers(resources).permitAll()
-			.antMatchers("/").permitAll()
-			.antMatchers("/menuuser").permitAll()
-			.antMatchers("/user/**").hasAnyAuthority("ADMIN","USER")
-			.antMatchers("/admin/**").hasRole("ADMIN")
-			.anyRequest().authenticated()
+			.antMatchers("/").permitAll() //a este path puede ingresar cualquiera
+			.antMatchers("/admin/**").hasRole("ADMIN") 
+			.anyRequest().authenticated() //Caulquier otra url tiene que estar autenticada
 		.and()
-			.formLogin()
-			.loginPage("/login")
-			.permitAll().defaultSuccessUrl("/login/redirectMenu") //Una vez que se loguea que vaya a menu
-			.failureUrl("/login?error=true") //Si falla vuelve a la pagina de login
+			.formLogin() //form de login
+			.loginPage("/login") //va a la pagina de controller y toma la utl de login que lo llevaria a indx
+			.permitAll().defaultSuccessUrl("/login/success") //Una vez que se loguea que vaya a menu
+			.failureUrl("/login?error=true")  //Si falla que vaya a la pagina de login
 			.usernameParameter("username")
-			.passwordParameter("password")
+			.passwordParameter("password") //LO MISMO TIENE QUE ESTAR EN LA VISTA.-
 		.and()
 			.logout().permitAll().logoutSuccessUrl("/");
-	}
+}
+	
 
 }
