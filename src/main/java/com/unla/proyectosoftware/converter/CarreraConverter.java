@@ -4,12 +4,14 @@ import com.unla.proyectosoftware.entities.Carrera;
 import com.unla.proyectosoftware.models.CarreraModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component("carreraConverter")
 public class CarreraConverter {
     
     @Autowired
+    @Qualifier("universidadConverter")
     public UniversidadConverter universidadConverter;
 
     public Carrera modelToEntity(CarreraModel carreraModel){

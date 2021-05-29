@@ -5,6 +5,9 @@ public class ViewRouteHelper {
 	//USER
 	public static final String USER_INDEX = "user/index";
 
+	//HOME
+	public static final String HOME = "home";
+
 	//LOGIN
 	public static final String LOGIN = "/login";
 

@@ -1,22 +1,21 @@
 package com.unla.proyectosoftware.models;
 
+import java.util.Set;
+
 public class MateriaModel {
 
     private int idMateria;
     private String nombre;
     private CarreraModel carrera;
+    private Set<ProfesorModel> profesores;
 
     public MateriaModel() {}
     
-    public MateriaModel(int idMateria, String nombre) {
-        this.idMateria = idMateria;
-        this.nombre = nombre;
-    }
-
-    public MateriaModel(int idMateria, String nombre, CarreraModel carrera) {
+    public MateriaModel(int idMateria, String nombre, CarreraModel carrera, Set<ProfesorModel> profesores) {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.carrera = carrera;
+        this.profesores = profesores;
     }
 
     public int getIdMateria() {
@@ -43,6 +42,12 @@ public class MateriaModel {
         this.carrera = carrera;
     }
 
+    public Set<ProfesorModel> getProfesores() {
+        return profesores;
+    }
 
+    public void setProfesores(Set<ProfesorModel> profesores) {
+        this.profesores = profesores;
+    }
     
 }

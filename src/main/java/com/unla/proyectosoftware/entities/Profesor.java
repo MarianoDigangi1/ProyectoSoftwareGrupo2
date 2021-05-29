@@ -22,14 +22,8 @@ public class Profesor extends Usuario{
     @ManyToMany(mappedBy = "profesores")
     private Set<Materia> materias;
 
-    public Profesor(int idUsuario, String mail, String username, String password, Perfil perfil, String nombre,
-            String apellido, Set<Materia> materias) {
-        super(idUsuario, mail, username, password, perfil);
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.materias = materias;
-    }
-
+    public Profesor(){}
+    
     public Profesor(int idUsuario, String mail, String username, String password, Perfil perfil, String nombre,String apellido) {
         super(idUsuario, mail, username, password, perfil);
         this.nombre = nombre;

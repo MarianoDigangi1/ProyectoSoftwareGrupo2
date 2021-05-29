@@ -10,6 +10,7 @@ import com.unla.proyectosoftware.models.UniversidadModel;
 import com.unla.proyectosoftware.services.IUniversidadService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,6 +27,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class AdminController {
     
     @Autowired
+    @Qualifier("universidadService")
     public IUniversidadService universidadService; 
 
     @GetMapping("")
@@ -64,6 +66,8 @@ public class AdminController {
             }
             
         }
+
+        
         universidadService.insertOrUpdate(univ);
         return new RedirectView(ViewRouteHelper.ADMIN_ROOT );
     }

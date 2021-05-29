@@ -3,9 +3,11 @@ package com.unla.proyectosoftware.repository;
 import java.io.Serializable;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.unla.proyectosoftware.entities.Perfil;
 
-public interface IPerfilService extends JpaRepository<Perfil, Serializable>{
+@Repository("perfilRepository")
+public interface IPerfilRepository extends JpaRepository<Perfil, Serializable>{
 
 }
