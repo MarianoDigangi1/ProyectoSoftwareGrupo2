@@ -1,14 +1,18 @@
 package com.unla.proyectosoftware.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "perfil")
+@Entity
+@Table(name = "perfil")
 public class Perfil {
 
 	@Id
@@ -18,6 +22,9 @@ public class Perfil {
 	@Column(name = "nombreRol")
 	private String nombreRol;
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "perfil")
+	private Set<Usuario> usuarios;
+	
 	public Perfil() {}
 
 	public Perfil(int idPerfil, String nombreRol) {

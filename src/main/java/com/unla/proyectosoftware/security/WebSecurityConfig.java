@@ -33,7 +33,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		System.out.println("hola");
+		http.authorizeRequests()
+			.antMatchers(resources).permitAll()
+			.antMatchers("/").permitAll()
+			.antMatchers("/menuuser").permitAll()
+			.antMatchers("/user/**").hasAnyAuthority("ADMIN","USER")
+			.antMatchers("/admin/**").hasRole("ADMIN")
+			.anyRequest().authenticated()
+		.and()
+			.formLogin()
+			.loginPage("/login")
+			.permitAll().defaultSuccessUrl("/login/redirectMenu") //Una vez que se loguea que vaya a menu
+			.failureUrl("/login?error=true") //Si falla vuelve a la pagina de login
+			.usernameParameter("username")
+			.passwordParameter("password")
+		.and()
+			.logout().permitAll().logoutSuccessUrl("/");
 	}
 
 }

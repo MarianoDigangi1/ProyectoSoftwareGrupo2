@@ -8,5 +8,5 @@ public class GenerarPasswordAdmin {
 	BCryptPasswordEncoder passwordEncoder=  new BCryptPasswordEncoder();
 	System.out.println(passwordEncoder.encode("admin"));
 
-}
+	}
 }

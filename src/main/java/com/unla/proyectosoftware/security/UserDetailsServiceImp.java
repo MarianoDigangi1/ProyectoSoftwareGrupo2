@@ -11,12 +11,24 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import com.unla.proyectosoftware.entities.Perfil;
+import com.unla.proyectosoftware.entities.Usuario;
+
 @Service
 public class UserDetailsServiceImp implements UserDetailsService {
 
+	@Autowired
+	private com.unla.proyectosoftware.repository.IUsuarioRepository userRepository;
+
 	@Override
-	public UserDetails loadUserByUsername(String username){
-		return null;
+	public UserDetails loadUserByUsername(String username) {
+		Usuario user = userRepository.findByUsername(username);
+		List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
+		Perfil perfil = user.getPerfil();
+		GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(perfil.getNombreRol());
+		grantList.add(grantedAuthority);
+		UserDetails usuario = (UserDetails) new User(user.getUsername(), user.getPassword(), grantList);
+		return usuario;
 	}
 	
 	

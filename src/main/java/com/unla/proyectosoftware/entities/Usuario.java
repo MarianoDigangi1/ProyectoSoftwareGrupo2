@@ -16,37 +16,39 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
+	private int idUsuario;
+
 	@Column(name = "username")
 	private String username;
-	
-	@Column(name="password")
-	private String password;
-	
-	@Column(name="email")
-	private String email;
-	
-	@ManyToOne(fetch = FetchType.LAZY) //1 USUARIO TIENE UN ROL. IdPerfil ES DE LA pk de rol
-	@JoinColumn(name="idPerfil")
-	private Perfil perfil;
-	
-	public Usuario() {}
 
-	public Usuario(int id, String username, String password, String email) {
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "email")
+	private String email;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idPerfil")
+	private Perfil perfil;
+
+	public Usuario() {
+	}
+
+	public Usuario(int idUsuario, String username, String password, String email, Perfil perfil) {
 		super();
-		this.id = id;
+		this.idUsuario = idUsuario;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.perfil = perfil;
 	}
 
 	public int getId() {
-		return id;
+		return idUsuario;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.idUsuario = id;
 	}
 
 	public String getUsername() {
@@ -72,4 +74,21 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
+
 }

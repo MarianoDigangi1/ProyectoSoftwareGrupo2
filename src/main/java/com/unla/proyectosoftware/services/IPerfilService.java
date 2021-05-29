@@ -1,5 +1,5 @@
 package com.unla.proyectosoftware.services;
 
-public interface IUniversidaService {
+public interface IPerfilService {
 
 }
