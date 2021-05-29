@@ -27,6 +27,7 @@
         </div>
     </header>
     <main>
+        <!--
         <seccion class="service contenedor" id="servicio">
             <h2 class="subtitulo">Acerca de </h2>
             <div class="contenedor-servicio">
@@ -52,19 +53,25 @@
                     </div>
                 </div>
             </div>
+        </seccion>-->
+        <seccion class="service contenedor" id="servicio">
+
         </seccion>
         <!-- seccion de la galeria -->
         <section class="galery" id="portafolio">
             <div class="contenedor">
-                <h2 class="subtitulo">Carreras</h2>
-                <div   class="contenedor-galeria">
-                    <img src="img/sistemas_intento1.jpg" alt="" class="img-galeria">
-                    <img src="img/contabilidad-galeria.jpg" alt="" class="img-galeria">
-                    <img src="img/disenio-galeria.jpg" alt="" class="img-galeria">
+                <h2 class="subtitulo">Universidades</h2>
+                <div class="contenedor-galeria">
+                    <div th:each="universidad:${universidades}">
+                        <a th:href="@{/admin/modificar/universidad/}+${universidad.idUniversidad}">
+                            <h3 th:text="${universidad.nombre}"></h3>
+                            <img th:src="@{'/Universidades/'} + ${universidad.logo}" width="200px" height="200px">
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
-        <!-- lightbox o ventana flotante -->
+        <!-- lightbox o ventana flotante 
         <section class="imagen-light">
             <img src="img/close.svg" alt="" class="close">
             <img src="img/sistemas_intento1.jpg" alt="" class="agregar-imagen">
@@ -89,7 +96,7 @@
         <div class="contenedor no_relacion">
             <p>UNLA Library no forma parte de la UNLa. El contacto es directamente con la Universidad. Pagina sin fines de lucro.</p>
         </div>
-    </footer>
+    </footer>-->
     <!-- enlaso con el javascript -->
     <script src="js/menu.js"></script>
     <!-- este scrip hace funcionar a la "X" -->

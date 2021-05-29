@@ -4,11 +4,14 @@ import com.unla.proyectosoftware.entities.Profesor;
 import com.unla.proyectosoftware.models.ProfesorModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-
+@Component("profesorConverter")
 public class ProfesorConverter {
     
     @Autowired
+    @Qualifier("perfilConverter")
     private PerfilConverter perfilConverter;
 
     public Profesor modelToEntity(ProfesorModel profesorModel){

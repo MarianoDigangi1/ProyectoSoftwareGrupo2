@@ -31,11 +31,17 @@ public class Universidad {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE ,mappedBy="universidad")  //1 ROL TIENE MUCHOS USUARIOS  . perfil ES DE LA LISTA DE USUARIOS
 	private Set<Carrera> carreras;// =new HashSet<Usuario>(
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "administradorUnivId", referencedColumnName = "usuarioId")
     private AdministradorUniv administradorUniv;
 
     public Universidad() {}
+
+    public Universidad(int idUniversidad, String nombre, String logo) {
+        this.idUniversidad = idUniversidad;
+        this.nombre = nombre;
+        this.logo = logo;
+    }
 
     public Universidad(int idUniversidad, String nombre, String logo, AdministradorUniv administradorUniv) {
         this.idUniversidad = idUniversidad;

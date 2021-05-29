@@ -1,15 +1,17 @@
 package com.unla.proyectosoftware.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.unla.proyectosoftware.entities.Usuario;
 import com.unla.proyectosoftware.models.UsuarioModel;
 
-@Component
+@Component("usuarioConverter")
 public class UsuarioConverter {
 	
 	@Autowired
+	@Qualifier("perfilConverter")
 	private PerfilConverter perfilConverter;
 	
 	public UsuarioModel entityToModel(Usuario user) {
