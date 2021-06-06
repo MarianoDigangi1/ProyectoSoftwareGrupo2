@@ -44,10 +44,6 @@ public class CarreraService implements ICarreraService{
 
 	@Override
 	public void insertOrUpdate(CarreraModel model) {
-		System.out.println("esto es en el service " + model);
-		System.out.println(model.getIdCarrera());
-		System.out.println(model.getNombre());
-		System.out.println(model.getUniversidad());
 		carreraRepository.save(carreraConverter.modelToEntity(model));
 	}
 

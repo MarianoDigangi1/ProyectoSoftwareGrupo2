@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 
 import com.unla.proyectosoftware.helpers.ViewRouteHelper;
 import com.unla.proyectosoftware.models.CarreraModel;
-import com.unla.proyectosoftware.models.MateriaModel;
 import com.unla.proyectosoftware.models.UniversidadModel;
 import com.unla.proyectosoftware.services.ICarreraService;
 import com.unla.proyectosoftware.services.IUniversidadService;
@@ -117,18 +116,3 @@ public class AdminController {
 	}
 }
 
-/*
- * 
- *  @PostMapping("/create")
-    public RedirectView create(@ModelAttribute("permiso") PermisoDiarioModel permiso,
-							   @RequestParam(required = true) int desde,
-							   @RequestParam(required = true) int hasta) {
-		Set<LugarModel> lugares = new HashSet<>();
-		LugarModel desdeLugar = lugarService.findByIdLugar(desde);
-		LugarModel hastaLugar = lugarService.findByIdLugar(hasta);
-		lugares.add(desdeLugar);
-		lugares.add(hastaLugar);
-		permiso.setDesdeHasta(lugares);
-    	permisoDiarioService.insertOrUpdate(permiso);
-        return new RedirectView(ViewRouteHelper.HOME_ROOT);
-    }*/
