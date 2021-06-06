@@ -3,58 +3,65 @@ package com.unla.proyectosoftware.models;
 import java.util.Set;
 
 public class CarreraModel {
-    
-    private int idCarrea;
-    private String nombre;
-    private UniversidadModel universidad;
-    private Set<MateriaModel> materias;
 
-    public CarreraModel() {}
-    
-    public CarreraModel(int idCarrea, String nombre, UniversidadModel universidad) {
-        this.idCarrea = idCarrea;
-        this.nombre = nombre;
-        this.universidad = universidad;
-    }
+	private int idCarrera;
+	private String nombre;
+	private UniversidadModel universidad;
+	private Set<MateriaModel> materias;
 
-    public CarreraModel(int idCarrea, String nombre, UniversidadModel universidad, Set<MateriaModel> materias) {
-        this.idCarrea = idCarrea;
-        this.nombre = nombre;
-        this.universidad = universidad;
-        this.materias = materias;
-    }
+	public CarreraModel() {}
 
-    public int getIdCarrea() {
-        return idCarrea;
-    }
+	public CarreraModel(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public CarreraModel(int idCarrera, String nombre, UniversidadModel universidad) {
+		this.idCarrera = idCarrera;
+		this.nombre = nombre;
+		this.universidad = universidad;
+	}
 
-    protected void setIdCarrea(int idCarrea) {
-        this.idCarrea = idCarrea;
-    }
+	public CarreraModel(int idCarrera, String nombre, UniversidadModel universidad, Set<MateriaModel> materias) {
+		this.idCarrera = idCarrera;
+		this.nombre = nombre;
+		this.universidad = universidad;
+		this.materias = materias;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public int getIdCarrera() {
+		return idCarrera;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	protected void setIdCarrera(int idCarrera) {
+		this.idCarrera = idCarrera;
+	}
 
-    public UniversidadModel getUniversidad() {
-        return universidad;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setUniversidad(UniversidadModel universidad) {
-        this.universidad = universidad;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public Set<MateriaModel> getMaterias() {
-        return materias;
-    }
+	public UniversidadModel getUniversidad() {
+		return universidad;
+	}
 
-    public void setMaterias(Set<MateriaModel> materias) {
-        this.materias = materias;
-    }
+	public void setUniversidad(UniversidadModel universidad) {
+		this.universidad = universidad;
+	}
 
-    
+	public Set<MateriaModel> getMaterias() {
+		return materias;
+	}
+
+	public void setMaterias(Set<MateriaModel> materias) {
+		this.materias = materias;
+	}
+
+	@Override
+	public String toString() {
+		return "CarreraModel [idCarrera=" + idCarrera + ", nombre=" + nombre;
+	}
 }

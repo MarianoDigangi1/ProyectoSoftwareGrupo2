@@ -32,21 +32,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			auth.userDetailsService(userDetails).passwordEncoder(passwordEncoder());     
 	}
 
-	//Que queremos que asegure y como.  
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests() 
 			.antMatchers(resources).permitAll()
-			.antMatchers("/").permitAll() //a este path puede ingresar cualquiera
+			.antMatchers("/").permitAll()
+			.antMatchers("/user/**").hasRole("USER")
 			.antMatchers("/admin/**").hasRole("ADMIN") 
-			.anyRequest().authenticated() //Caulquier otra url tiene que estar autenticada
+			.anyRequest().authenticated()
 		.and()
-			.formLogin() //form de login
-			.loginPage("/login") //va a la pagina de controller y toma la utl de login que lo llevaria a indx
-			.permitAll().defaultSuccessUrl("/login/success") //Una vez que se loguea que vaya a menu
-			.failureUrl("/login?error=true")  //Si falla que vaya a la pagina de login
+			.formLogin()
+			.loginPage("/login")
+			.permitAll().defaultSuccessUrl("/login/success")
+			.failureUrl("/login?error=true")
 			.usernameParameter("username")
-			.passwordParameter("password") //LO MISMO TIENE QUE ESTAR EN LA VISTA.-
+			.passwordParameter("password")
 		.and()
 			.logout().permitAll().logoutSuccessUrl("/");
 }

@@ -15,13 +15,13 @@ public class CarreraConverter {
     public UniversidadConverter universidadConverter;
 
     public Carrera modelToEntity(CarreraModel carreraModel){
-        return new Carrera(carreraModel.getIdCarrea(),
+        return new Carrera(carreraModel.getIdCarrera(),
                            carreraModel.getNombre(),
                            universidadConverter.modelToEntity(carreraModel.getUniversidad()));
     } 
 
     public CarreraModel entityToModel(Carrera carrera){
-        return new CarreraModel(carrera.getIdCarrea(),
+        return new CarreraModel(carrera.getIdCarrera(),
                                 carrera.getNombre(),
                                 universidadConverter.entityToModel(carrera.getUniversidad()));
     }

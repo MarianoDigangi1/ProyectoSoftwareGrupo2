@@ -12,19 +12,19 @@
         <div class="backButton">
             <a th:href="@{/admin}"><i class="fas fa-arrow-left"></i></a>
         </div>
+        <h3 th:text="${idUniversidad}"></h3>
         <div class="optionTable">
-            <a th:href="@{/admin/alta/universidad}">Agregar Universidad</a>
+            <a th:href="@{/admin/alta/carrera/} + ${idUniversidad}">Agregar Carrera</a>
         </div>
         <div class="listado">
-            <div th:each="universidad:${universidades}">
-                <a th:href="@{/admin/modificar/universidad/}+${universidad.idUniversidad}">
-                    <h3 th:text="${universidad.nombre}"></h3></a>
-                    <img th:src="@{'/Universidades/'} + ${universidad.logo}" width="200px" height="200px">
-                <a th:href="@{/admin/eliminar/universidad/}+${universidad.idUniversidad}">Eliminar
-                </a><br/>
-                <a th:href="@{admin/listar/} + ${universidad.idUniversidad}">Vista</a>
+            <div th:each="carrera:${carrera}">
+                    <h3 th:text="${carrera.nombre}"></h3>
+                <a>Eliminar</a>
+                <a th:href ="@{materia/listar/} + ${carrera.idCarrera}">Agregar Materias</a>
+                <!--th:text = "${carrera.idCarrera}"<a th:href="@{materia/listar/} + ${idCarrera}"></a>  -->
             </div>
         </div>
     </div>
 </body>
 </html>
+<!-- th:text="${pedido.nombre} + ${pedido.apellido} -->
