@@ -9,5 +9,7 @@ public interface IUniversidadService {
     
     public List<UniversidadModel> traerUniversidades();
 
+    public UniversidadModel findByIdUniversidad(int id);
+
     public void insertOrUpdate(UniversidadModel univ);
 }

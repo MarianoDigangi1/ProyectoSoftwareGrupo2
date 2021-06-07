@@ -37,15 +37,15 @@ public class Materia {
         joinColumns = @JoinColumn(name = "materiaId", nullable = false),
         inverseJoinColumns = @JoinColumn(name="profesorId", nullable = false)
     )
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     private Set<Profesor> profesores;
 
-    public Materia() {
-    }
+    public Materia() {}
 
-    public Materia(int idMateria, String nombre) {
+    public Materia(int idMateria, String nombre, Carrera carrera) {
         this.idMateria = idMateria;
         this.nombre = nombre;
+        this.carrera = carrera;
     }
 
     public Materia(int idMateria, String nombre, Carrera carrera, Set<Profesor> profesores) {
@@ -53,12 +53,6 @@ public class Materia {
         this.nombre = nombre;
         this.carrera = carrera;
         this.profesores = profesores;
-    }
-
-    public Materia(int idMateria, String nombre, Carrera carrera) {
-        this.idMateria = idMateria;
-        this.nombre = nombre;
-        this.carrera = carrera;
     }
 
     public int getIdMateria() {

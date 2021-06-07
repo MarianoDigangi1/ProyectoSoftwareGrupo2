@@ -21,7 +21,7 @@ public class Carrera {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCarrea;
+    private int idCarrera;
 
     @Column(name = "nombre")
     private String nombre;
@@ -35,25 +35,25 @@ public class Carrera {
 
     public Carrera() {}
 
-    public Carrera(int idCarrea, String nombre, Universidad universidad) {
-        this.idCarrea = idCarrea;
+    public Carrera(int idCarrera, String nombre, Universidad universidad) {
+        this.idCarrera = idCarrera;
         this.nombre = nombre;
         this.universidad = universidad;
     }
 
-    public Carrera(int idCarrea, String nombre, Universidad universidad, Set<Materia> materias) {
-        this.idCarrea = idCarrea;
+    public Carrera(int idCarrera, String nombre, Universidad universidad, Set<Materia> materias) {
+        this.idCarrera = idCarrera;
         this.nombre = nombre;
         this.universidad = universidad;
         this.materias = materias;
     }
 
-    public int getIdCarrea() {
-        return idCarrea;
+    public int getIdCarrera() {
+        return idCarrera;
     }
 
-    protected void setIdCarrea(int idCarrea) {
-        this.idCarrea = idCarrea;
+    protected void setIdCarrera(int idCarrera) {
+        this.idCarrera = idCarrera;
     }
 
     public String getNombre() {

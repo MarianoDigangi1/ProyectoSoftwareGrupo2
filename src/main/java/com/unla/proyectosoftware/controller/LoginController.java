@@ -4,9 +4,10 @@ import javax.servlet.http.HttpSession;
 
 import com.unla.proyectosoftware.helpers.ViewRouteHelper;
 import com.unla.proyectosoftware.models.UsuarioModel;
-import com.unla.proyectosoftware.services.impl.UsuarioService;
+import com.unla.proyectosoftware.services.IUsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +23,9 @@ import org.springframework.web.servlet.view.RedirectView;
 public class LoginController {
 	
 	@Autowired
-	private UsuarioService userService;
+	@Qualifier("usuarioService")
+	private IUsuarioService usuarioService;
+
 	@GetMapping("")
 	public String toLogin(){
 		return ViewRouteHelper.LOGIN;
@@ -33,7 +36,7 @@ public class LoginController {
 		RedirectView redirect = new RedirectView();
 		String username= auth.getName();
 
-		UsuarioModel user = userService.traerUsuarioYPerfil(username);
+		UsuarioModel user = usuarioService.traerUsuarioYPerfil(username);
 
 		if(user.getPerfil().getNombreRol().equals("ROLE_ADMIN")){
 			redirect.setUrl("/admin");
