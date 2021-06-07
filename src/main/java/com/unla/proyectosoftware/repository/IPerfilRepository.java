@@ -10,4 +10,5 @@ import com.unla.proyectosoftware.entities.Perfil;
 @Repository("perfilRepository")
 public interface IPerfilRepository extends JpaRepository<Perfil, Serializable>{
 
+    public Perfil findByNombreRol(String nombreRol);
 }

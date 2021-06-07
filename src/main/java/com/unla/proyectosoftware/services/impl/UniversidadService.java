@@ -36,19 +36,7 @@ public class UniversidadService implements IUniversidadService{
         universidadRepository.save(universidadConverter.modelToEntity(univ));
     }
 
-	@Override
-	public boolean eliminar(int id) {
-		try {
-			universidadRepository.deleteById(id);
-			System.out.println("im here");
-			return true;
-		}catch(Exception he) {
-			System.out.println("NO FUNCIONA");
-			return false;
-		}
-	}
-
-	@Override
+    @Override
 	public UniversidadModel findByIdUniversidad(int id) {
 		UniversidadModel aux = universidadConverter.entityToModel(universidadRepository.getById(id));
 		return aux;

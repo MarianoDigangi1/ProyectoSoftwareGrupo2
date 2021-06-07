@@ -20,14 +20,7 @@ public class UsuarioService implements IUsuarioService{
 	@Qualifier("usuarioConverter")
 	public UsuarioConverter usuarioConverter;
 	
-	@Override
-	public UsuarioModel traerUsuarioPorUsername(String username) {
-		UsuarioModel usuarioModel = usuarioConverter.entityToModel(usuarioRepository.findByUsername(username));
-		return usuarioModel;
-	}
-
-	@Override
-	public UsuarioModel traerUsuarioYPerfil(String username) {
+	public UsuarioModel traerUsuarioYPerfil(String username){
 		return usuarioConverter.entityToModel(usuarioRepository.findByUsernameAndFetchPerfilEagerly(username));
 	}
 }

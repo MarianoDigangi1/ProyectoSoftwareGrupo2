@@ -13,7 +13,7 @@ import com.unla.proyectosoftware.entities.Carrera;
 @Repository("carreraRepository")
 public interface ICarreraRepository extends JpaRepository<Carrera, Serializable>{
 
-	@Query("select c from Carrera c inner join fetch c.universidad cu WHERE cu.idCarrera  = (:idCarrera)")
+	@Query("select c from Carrera c inner join fetch c.universidad cu WHERE cu.idUniversidad  = (:idUniversidad)")
 	public List<Carrera> findByIdUniversidad(@Param ("idUniversidad") int idUniversidad);
 
 	public Carrera findByIdCarrera(int id);

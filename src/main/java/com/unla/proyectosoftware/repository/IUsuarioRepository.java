@@ -12,9 +12,6 @@ import com.unla.proyectosoftware.entities.Usuario;
 @Repository("usuarioRepository")
 public interface IUsuarioRepository extends JpaRepository<Usuario, Serializable>{
 
-	public Usuario findByUsername(String username);
-
 	@Query("SELECT u FROM Usuario u JOIN FETCH u.perfil WHERE u.username = (:username)")
 	public abstract Usuario findByUsernameAndFetchPerfilEagerly(@Param("username") String username);
-
 }

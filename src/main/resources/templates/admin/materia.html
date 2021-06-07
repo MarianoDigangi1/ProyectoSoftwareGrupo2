@@ -10,21 +10,20 @@
 <body>
     <div class="container">
         <div class="backButton">
-            <a th:href="@{/admin}"><i class="fas fa-arrow-left"></i></a>
+            <a th:href="@{/admin/carrera/}+${materia.carrera.idCarrera}"><i class="fas fa-arrow-left"></i></a>
         </div>
-        <h3 th:text="${idUniversidad}"></h3>
+        <h3 th:text="${materia.nombre}"></h3>
         <div class="optionTable">
-            <a th:href="@{/admin/alta/carrera/} + ${idUniversidad}">Agregar Carrera</a>
+            <a th:href="@{/admin/materia/agregarProfesor/} + ${materia.idMateria} ">Agregar Profesor</a>
         </div>
         <div class="listado">
-            <div th:each="carrera:${carrera}">
-                    <h3 th:text="${carrera.nombre}"></h3>
+            <div th:each="profesor : ${profesores}">
+                    <h3 th:text="${profesor.nombre} + ${profesor.apellido}"></h3>
                 <a>Eliminar</a>
-                <a th:href ="@{materia/listar/} + ${carrera.idCarrera}">Agregar Materias</a>
+                <a th:href ="@{/admin/materia/} + ${materia.idMateria}">Ver</a>
                 <!--th:text = "${carrera.idCarrera}"<a th:href="@{materia/listar/} + ${idCarrera}"></a>  -->
             </div>
         </div>
     </div>
 </body>
 </html>
-<!-- th:text="${pedido.nombre} + ${pedido.apellido} -->

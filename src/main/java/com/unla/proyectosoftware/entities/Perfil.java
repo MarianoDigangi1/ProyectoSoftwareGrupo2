@@ -23,8 +23,8 @@ public class Perfil {
 	private String nombreRol;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="perfil")  //1 ROL TIENE MUCHOS USUARIOS  . perfil ES DE LA LISTA DE USUARIOS
-	private Set<Usuario> usuarios;
-
+	private Set<Usuario> usuarios;// =new HashSet<Usuario>();
+	
 	public Perfil() {}
 
 	public Perfil(int idPerfil,String nombreRol) {

@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository("universidadRepository")
 public interface IUniversidadRespository extends JpaRepository<Universidad, Serializable> {
-
-	public List<Universidad> findAll();
+      
+    public List<Universidad> findAll();
 }

@@ -42,6 +42,12 @@ public class Materia {
 
     public Materia() {}
 
+    public Materia(int idMateria, String nombre, Carrera carrera) {
+        this.idMateria = idMateria;
+        this.nombre = nombre;
+        this.carrera = carrera;
+    }
+
     public Materia(int idMateria, String nombre, Carrera carrera, Set<Profesor> profesores) {
         this.idMateria = idMateria;
         this.nombre = nombre;

@@ -24,26 +24,45 @@ public class MateriaConverter {
     private CarreraConverter carreraConverter;
 
     public Materia modelToEntity(MateriaModel materiaModel){
-        Set<Profesor> profesores = new HashSet<>();
-        for(ProfesorModel p : materiaModel.getProfesores()){
-            profesores.add(profesorConverter.modelToEntity(p));
+        Materia materia = null;
+        if(materiaModel.getProfesores() == null){
+            materia = new Materia(materiaModel.getIdMateria(),
+                                    materiaModel.getNombre(),
+                                    carreraConverter.modelToEntity(materiaModel.getCarrera())
+                                    );
+        }else{
+            Set<Profesor> profesores = new HashSet<>();
+            for(ProfesorModel p : materiaModel.getProfesores()){
+                profesores.add(profesorConverter.modelToEntity(p));
+            }
+            materia = new Materia(materiaModel.getIdMateria(),
+                                    materiaModel.getNombre(),
+                                    carreraConverter.modelToEntity(materiaModel.getCarrera()),
+                                    profesores
+                                    );
         }
-        return new Materia(materiaModel.getIdMateria(),
-                           materiaModel.getNombre(),
-                           carreraConverter.modelToEntity(materiaModel.getCarrera()),
-                           profesores
-                           );
+        
+        return materia;
     }
 
     public MateriaModel entityToModel(Materia materia){
-        Set<ProfesorModel> profesores = new HashSet<>();
-        for(Profesor p : materia.getProfesores()){
-            profesores.add(profesorConverter.entityToModel(p));
-        }
-        return new MateriaModel(materia.getIdMateria(),
-                                materia.getNombre(),
-                                carreraConverter.entityToModel(materia.getCarrera()),
-                                profesores
-                                );
+        MateriaModel materiaModel = null;
+        if(materia.getProfesores() == null){
+            materiaModel = new MateriaModel(materia.getIdMateria(),
+                                            materia.getNombre(),
+                                            carreraConverter.entityToModel(materia.getCarrera())
+                                            );
+        }else{
+            Set<ProfesorModel> profesores = new HashSet<>();
+            for(Profesor p : materia.getProfesores()){
+                profesores.add(profesorConverter.entityToModel(p));
+            }
+            materiaModel = new MateriaModel(materia.getIdMateria(),
+                                            materia.getNombre(),
+                                            carreraConverter.entityToModel(materia.getCarrera()),
+                                            profesores
+                                            );
+        }  
+        return materiaModel;
     }
 }
